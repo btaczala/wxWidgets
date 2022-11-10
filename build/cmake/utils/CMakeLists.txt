@@ -29,6 +29,9 @@ if(wxUSE_XRC)
         RUNTIME DESTINATION "bin"
         BUNDLE DESTINATION "bin"
         )
+        if(WIN32)
+            install(FILES $<TARGET_PDB_FILE:wxrc> DESTINATION "bin")
+        endif()
 
     if(NOT WIN32_MSVC_NAMING AND wxBUILD_INSTALL)
         if(IPHONE)

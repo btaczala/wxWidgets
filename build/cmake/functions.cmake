@@ -441,6 +441,9 @@ macro(wx_add_library name)
             BUNDLE DESTINATION Applications/wxWidgets
             )
         wx_target_enable_precomp(${name} "${wxSOURCE_DIR}/include/wx/wxprec.h")
+        if(WIN32)
+            install(FILES $<TARGET_PDB_FILE:${name}> DESTINATION "lib${GEN_EXPR_DIR}${wxPLATFORM_LIB_DIR}")
+        endif()
     endif()
 endmacro()
 
